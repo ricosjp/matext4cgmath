@@ -2,6 +2,13 @@
 name = "matext4cgmath"
 version = "0.1.0"
 edition = "2021"
+authors = ["Yoshinori Tanimura <tanimura@ricos.co.jp>"]
+description = "Unofficial third-party cgmath extensions for calculate eigenvalues, operator norms and Iwasawa decomposition."
+homepage = "https://github.com/ricosjp/matext4cgmath"
+repository = "https://github.com/ricosjp/matext4cgmath"
+license = "Apache-2.0"
+keywords = ["cgmath", "graphics", "linear algebra"]
+categories = ["graphics"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
