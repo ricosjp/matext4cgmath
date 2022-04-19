@@ -7,7 +7,7 @@ description = "Unofficial third-party cgmath extensions for calculate eigenvalue
 homepage = "https://github.com/ricosjp/matext4cgmath"
 repository = "https://github.com/ricosjp/matext4cgmath"
 license = "Apache-2.0"
-keywords = ["cgmath", "graphics", "linear algebra"]
+keywords = ["cgmath", "graphics", "linear-algebra"]
 categories = ["graphics"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
