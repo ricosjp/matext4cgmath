@@ -1,11 +1,12 @@
 use crate::*;
 
+#[cfg_attr(doc, katexit::katexit)]
 /// Solve equation: $x^2 + ax + b = 0$.
 ///
 /// # Examples
 ///
 /// ```
-/// use cgmath_matrix_extensions::solver;
+/// use matext4cgmath::solver;
 /// use num_complex::Complex;
 /// const EPS: f64 = 1.0e-10;
 ///
@@ -33,12 +34,13 @@ pub fn solve_quadratic<F: BaseFloat>(a: F, b: F) -> [Complex<F>; 2] {
     }
 }
 
+#[cfg_attr(doc, katexit::katexit)]
 /// Solve equation: $x^3 + px + q = 0$.
 ///
 /// # Examples
 ///
 /// ```
-/// use cgmath_matrix_extensions::solver;
+/// use matext4cgmath::solver;
 /// use num_complex::Complex;
 /// const EPS: f64 = 1.0e-10;
 ///
@@ -102,12 +104,13 @@ pub fn pre_solve_cubic<F: BaseFloat>(p: F, q: F) -> [Complex<F>; 3] {
     res
 }
 
+#[cfg_attr(doc, katexit::katexit)]
 /// solve equation: $x^3 + ax^2 + bx + c = 0$.
 ///
 /// # Examples
 ///
 /// ```
-/// use cgmath_matrix_extensions::solver;
+/// use matext4cgmath::solver;
 /// use num_complex::Complex;
 /// const EPS: f64 = 1.0e-10;
 ///
@@ -132,12 +135,13 @@ pub fn solve_cubic<F: BaseFloat>(a: F, b: F, c: F) -> [Complex<F>; 3] {
     res
 }
 
+#[cfg_attr(doc, katexit::katexit)]
 /// solve equation: $x^4 + px^2 + qx + r = 0$.
 ///
 /// # Examples
 ///
 /// ```
-/// use cgmath_matrix_extensions::solver;
+/// use matext4cgmath::solver;
 /// use num_complex::Complex;
 /// const EPS: f64 = 1e-7;
 ///
@@ -197,12 +201,13 @@ pub fn pre_solve_quartic<F: BaseFloat>(p: F, q: F, r: F) -> [Complex<F>; 4] {
     res
 }
 
+#[cfg_attr(doc, katexit::katexit)]
 /// solve equation: $x^4 + ax^3 + bx^2 + cx + d = 0$.
 ///
 /// # Examples
 ///
 /// ```
-/// use cgmath_matrix_extensions::solver;
+/// use matext4cgmath::solver;
 /// use num_complex::Complex;
 /// const EPS: f64 = 1.0e-10;
 ///

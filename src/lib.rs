@@ -33,7 +33,7 @@ pub trait EigenValues: VectorSpace {
     ///
     /// ```
     /// use cgmath::*;
-    /// use cgmath_matrix_extensions::*;
+    /// use matext4cgmath::*;
     /// use num_complex::Complex;
     /// const EPS: f64 = 1.0e-10;
     ///
@@ -47,13 +47,29 @@ pub trait EigenValues: VectorSpace {
     fn eigenvalues(self) -> Self::EigenValues;
 }
 
-/// operator norms: abs sum, Euclid, and max.
+#[cfg_attr(doc, katexit::katexit)]
+/// [operator norms](https://en.wikipedia.org/wiki/Matrix_norm): $L^1$, $L^2$, and $L^\infty$.
+/// # Examples
+///
+/// ```
+/// use cgmath::*;
+/// use matext4cgmath::*;
+///
+/// let mat = Matrix2::new(1.0, 3.0, -2.0, 4.0);
+/// // L^1 operator norm is the maximum column absolute sumation.
+/// assert_eq!(mat.norm_l1(), 6.0);
+/// // L^2 operator norm is the maximum singular value.
+/// let ans_norm_l2 = (5.0 + f64::sqrt(5.0)) / f64::sqrt(2.0);
+/// assert!(f64::abs(mat.norm_l2() - ans_norm_l2) < 1.0e-10);
+/// // L^∞ operator norm is the maximum row absolute sumation.
+/// assert_eq!(mat.norm_linf(), 7.0);
+/// ```
 pub trait OperatorNorm: VectorSpace {
-    /// operator norm for absolute value sumation: $l^1$.
+    /// operator norm for absolute value sumation: $L^1$.
     fn norm_l1(self) -> Self::Scalar;
-    /// operator norm for Euclidean norm.
+    /// operator norm for Euclidean norm: $L^2$.
     fn norm_l2(self) -> Self::Scalar;
-    /// operator norm for absolute value maximum: $l^{\infty}$.
+    /// operator norm for absolute value maximum: $L^{\infty}$.
     fn norm_linf(self) -> Self::Scalar;
 }
 
@@ -63,6 +79,18 @@ where
     Self::Scalar: BaseFloat,
 {
     /// calculate exponential
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use cgmath::*;
+    /// use matext4cgmath::*;
+    ///
+    /// let x = Matrix2::new(0.0, 1.0, -1.0, 0.0);
+    /// let res = x.exp();
+    /// let ans = Matrix2::from_angle(Rad(1.0));
+    /// assert!((res - ans).norm_l1() < 1.0e-10);
+    /// ```
     fn exp(self) -> Self {
         use num_traits::{Float, NumCast};
         let eps = <Self::Scalar as Float>::epsilon();
@@ -79,13 +107,10 @@ where
     }
 }
 
+#[cfg_attr(doc, katexit::katexit)]
 /// some decompositions of matrix
 pub trait Decomposition: VectorSpace {
-    /// Returns $(K, S)$ of the Cartan decomposition: $M = K exp(S)$.
-    ///
-    /// - $K$: orthonormal matrix
-    /// - $S$: symmetric matrix
-    fn cartan_decomposition(self) -> Option<(Self, Self)>;
+    #[cfg_attr(doc, katexit::katexit)]
     /// Returns $(K, A, N)$ of the Iwasawa decomposition: $M = KAN$.
     ///
     /// - $K$: orthonormal matrix
