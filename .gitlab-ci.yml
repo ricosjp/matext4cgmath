@@ -3,28 +3,28 @@ stages:
   - deploy
 
 lint:
-  - image: rust:latest
-  - stage: test
-  - before_script:
+  image: rust:latest
+  stage: test
+  before_script:
     - rustup component add rustfmt clippy
-  - script:
+  script:
     - cargo fmt -- --check
     - cargo clippy
 
 test:
-  - image: rust:latest
-  - stage: test
-  - script:
+  image: rust:latest
+  stage: test
+  script:
     - cargo test
 
 pages:
-  - image: rust:latest
-  - stage: deploy
-  - script:
+  image: rust:latest
+  stage: deploy
+  script:
     - cargo doc --no-deps
     - mv target/doc public
-  - artifacts:
+  artifacts:
     paths:
       - public
-  - only:
+  only:
     - main
